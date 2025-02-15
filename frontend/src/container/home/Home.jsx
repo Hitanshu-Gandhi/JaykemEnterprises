@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import Chemistry from "../../assets/json/chemistry.json";
 import AOS from "aos";
@@ -25,192 +25,162 @@ import { Link } from "react-router-dom";
 import ceopic from "../../assets/images/logo/Kalpesh Gandhi.jpg";
 import developer from "../../assets/images/logo/Hitanshu.jpg";
 import logistic from "../../assets/images/logo/pravin gangurde.jpg";
-import Preloader from "../../components/preloader/Preloader";
+
 const Home = () => {
-  AOS.init({
-    duration: 1200,
-  });
+  useEffect(() => {
+    AOS.init({ duration: 1200 });
+  }, []);
 
   return (
     <>
-      {/* {loading ? <Preloader /> : null} */}
       <Header />
       <Header2 />
-      {/* part-1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center text-center h-[70vh] md:h-[86vh]">
-        <div className="p-2 my-4 mx-4">
-          <Lottie animationData={Chemistry} loop={true} autoPlay={true} />
+
+      {/* Hero Section */}
+      <section className="grid grid-cols-1 md:grid-cols-2 items-center justify-center text-center py-12 md:py-20 bg-gradient-to-r from-blue-100 to-white">
+        <div className="p-4">
+          <Lottie animationData={Chemistry} loop autoPlay />
         </div>
         <div>
           <h1
-            className=" md:mx-1 my-4 text-2xl font-Roboto md:text-5xl"
+            className="text-2xl md:text-5xl font-bold font-Roboto my-4"
             data-aos="zoom-in"
           >
-            "Empowering Industry Through Chemical Excellence"
+            Empowering Industry Through Chemical Excellence
           </h1>
-          <p className="md:text-xl text-[0.8rem] font-Poppins md:p-4">
-            <span className=" bg-[#ff9d5c] rounded-3xl p-1 px-3 ">
+          <p className="text-sm md:text-xl font-Poppins p-2 md:p-4 bg-orange-200 inline-block rounded-3xl">
             Your Trusted Source for Quality Chemical Solutions.
-            </span>
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* part-2 : Features */}
-      <div className=" bg-[#f0f0f0] p-2 text-center">
-        <h1 className="md:text-5xl text-4xl mx-auto leading-normal font-Roboto font-semibold mt-8">
+      {/* Features Section */}
+      <section className="bg-gray-100 py-12">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-8 font-Roboto">
           Features
-        </h1>
-        <div className="grid grid-cols-2 gap-12 p-4 md:grid-cols-4 md:gap-32 font-Poppins text-center md:p-20">
-          <div className="p-2 md:mx-4 justify-center items-center grid">
-            <img src={quality} alt="" className="h-[10rem]" />
-            <h1>Quality Product</h1>
-          </div>
-          <div className="p-2 md:mx-4 justify-center items-center grid">
-            <img src={delivery} alt="" className="h-[10rem]" />
-            <h1>Fast & on time Delivery</h1>
-          </div>
-          <div className="p-2 md:mx-4 justify-center items-center grid">
-            <img src={flask} alt="" className="h-[10rem]" />
-            <h1>Premium Grade</h1>
-          </div>
-          <div className="p-2 md:mx-4 md:text-left justify-center items-center grid">
-            <img src={service} alt="" className="h-[10rem]" />
-            <h1>Customer Service</h1>
-          </div>
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16 px-4">
+          {[
+            { src: quality, label: "Quality Product" },
+            { src: delivery, label: "Fast & On-Time Delivery" },
+            { src: flask, label: "Premium Grade" },
+            { src: service, label: "Customer Service" },
+          ].map((feature, index) => (
+            <div key={index} className="text-center">
+              <img
+                src={feature.src}
+                alt={feature.label}
+                className="h-20 mx-auto"
+              />
+              <h3 className="mt-4 font-medium text-lg">{feature.label}</h3>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* part-3 : Most selling product */}
-      <div>
-        <h1 className="md:text-5xl text-4xl mx-auto leading-normal text-center font-Roboto font-semibold mt-8 p-2">
+      {/* Most Selling Products Section */}
+      <section className="py-12">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-8 font-Roboto">
           Most Selling Products
-        </h1>
-        <div className="grid font-Poppins grid-cols-1 md:grid-cols-3 gap-10 justify-center items-center p-6 md:mx-24 my-8">
-          <Link to={"/product/calciumchloride"}>
-            <CardH
-              img={cacl2}
-              name="Calcium Chloride"
-              specs="Calcium chloride is used in the pulp and paper industry as a coagulant to improve the performance of organic polymers. It is often a component in the manufacture of paper to improve printability, as it improves electrical conductivity on the surface, facilitating sharper printing of text and imagery."
-            />
-          </Link>
-          <Link to={"/product/magnesiumcarbonate"}>
-            <CardH
-              img={mgco3}
-              name="Magnesium Carbonate"
-              specs="Magnesium Carbonate is an inorganic salt with the chemical name Magnesium Carbonate. It is also called Magnesite Hydromagnesite or Barringtonite.  It acts as a fertiliser and as an antacid."
-            />
-          </Link>
-          <Link to={"/product/quicklime"}>
-            <CardH
-              img={ql}
-              name="Quick Lime"
-              specs="Quick lime is used in the manufacture of iron and steel, and paper and pulp. A combination of phenolphthalein and calcium oxide is used in water detection pastes. Used in making porcelain and glass. In preparation of bleaching powder, calcium carbide, and calcium cyanamide."
-            />
-          </Link>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 md:px-24">
+          {[
+            {
+              link: "/product/calciumchloride",
+              img: cacl2,
+              name: "Calcium Chloride",
+              specs: "Used in the pulp and paper industry as a coagulant.",
+            },
+            {
+              link: "/product/magnesiumcarbonate",
+              img: mgco3,
+              name: "Magnesium Carbonate",
+              specs: "An inorganic salt used as a fertilizer and antacid.",
+            },
+            {
+              link: "/product/quicklime",
+              img: ql,
+              name: "Quick Lime",
+              specs:
+                "Essential in manufacturing iron, steel, paper, and porcelain.",
+            },
+          ].map((product, index) => (
+            <Link to={product.link} key={index}>
+              <CardH
+                img={product.img}
+                name={product.name}
+                specs={product.specs}
+              />
+            </Link>
+          ))}
         </div>
-        <div className=" flex justify-end mr-10 mb-6">
-          <Link to={"/product"}>
-            <button className=" text-blue-900 text-xl font-Poppins font-medium">
-              More..
+        <div className="text-center mt-8">
+          <Link to="/product">
+            <button className="px-6 py-2 text-blue-600 font-medium text-lg border border-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition-colors duration-300">
+              View More
             </button>
           </Link>
         </div>
-      </div>
+      </section>
 
-      {/* part-4 Testimonial*/}
-      <div className=" bg-[#f0f0f0] p-2">
-        <div className="text-center py-10">
-          <h1 className="md:text-5xl text-4xl mx-auto leading-normal font-Roboto font-semibold mb-12">
-            Read What Others Say
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 font-Poppins max-w-5xl md:mx-auto mx-10 gap-8 group">
+      {/* Testimonials Section */}
+      <section className="bg-gray-100 py-12">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12 font-Roboto">
+          Read What Others Say
+        </h2>
+        <div className="grid grid-cols-1 px-10 md:px-0 md:grid-cols-3 gap-8 mx-auto max-w-6xl">
+          {[
+            {
+              name: "Varun Joshi",
+              desc: "Jaykem Enterprises delivers both quality and affordability. Highly recommended!",
+            },
+            {
+              name: "Raghav Deshmukh",
+              desc: "Superb quality and affordability. My top recommendation for quality chemicals.",
+            },
+            {
+              name: "Rohan Bhat",
+              desc: "The balance of excellence and reasonable pricing exceeded my expectations.",
+            },
+          ].map((testimonial, index) => (
             <Testimonial
-              // img={testi1}
-              name="Varun Joshi"
-              desc="I recently purchased chemicals from Jaykem Enterprises and was very pleased with the quality and affordability. The chemicals were of excellent quality and the price was very reasonable. I would highly recommend Jaykem Enterprises for anyone looking chemicals."
+              key={index}
+              name={testimonial.name}
+              desc={testimonial.desc}
             />
-            <Testimonial
-              // img={testi2}
-              name="Raghav Deshmukh"
-              desc="Jaykem Enterprises delivers both quality and affordability. I recently purchased chemicals from them, and the balance of excellence and reasonable prices exceeded my expectations. Highly recommended!"
-            />
-            <Testimonial
-              // img={testi3}
-              name="Rohan Bhat"
-              desc="I recently procured chemicals from Jaykem Enterprises and was pleasantly surprised by the superb quality and affordability. The excellence in their products coupled with reasonable prices makes Jaykem Enterprises my top recommendation for anyone seeking quality chemicals at a fair cost."
-            />
-          </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* part-5 Team */}
-      <div className="p-4">
-        <div className="text-center">
-          <h1 className="md:text-5xl text-4xl mx-auto underline mb-4 leading-normal font-Roboto font-semibold p-4">
-            Meet Our Team
-          </h1>
+      {/* Meet Our Team Section */}
+      <section className="py-12">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-8 underline font-Roboto">
+          Meet Our Team
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { img: ceopic, name: "Kalpesh Gandhi", role: "CEO" },
+            { img: developer, name: "Hitanshu Gandhi", role: "Developer" },
+            { img: logistic, name: "Pravin Gangurde", role: "Logistic Head" },
+          ].map((team, index) => (
+            <Card key={index} className="w-80 mx-auto">
+              <CardHeader floated={false} className="h-64">
+                <img
+                  src={team.img}
+                  alt={team.name}
+                  className="h-full w-full object-cover"
+                />
+              </CardHeader>
+              <CardBody className="text-center">
+                <Typography variant="h5" className="font-medium mb-2">
+                  {team.name}
+                </Typography>
+                <Typography>{team.role}</Typography>
+              </CardBody>
+            </Card>
+          ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="grid font-Poppins justify-center items-center text-center">
-            <Card className="w-96 ">
-              <CardHeader floated={false} className="h-80">
-                <img src={ceopic} />
-              </CardHeader>
-              <CardBody className="text-center">
-                <Typography variant="h4" color="blue-gray" className="mb-2">
-                  Kalpesh Gandhi
-                </Typography>
-                <Typography
-                  color="blue-gray"
-                  className="font-medium text-lg"
-                  textGradient
-                >
-                  CEO
-                </Typography>
-              </CardBody>
-            </Card>
-          </div>
-          <div className="grid font-Poppins justify-center items-center text-center">
-            <Card className="w-96 ">
-              <CardHeader floated={false} className="h-80">
-                <img src={developer} />
-              </CardHeader>
-              <CardBody className="text-center">
-                <Typography variant="h4" color="blue-gray" className="mb-2">
-                  Hitanshu Gandhi
-                </Typography>
-                <Typography
-                  color="blue-gray"
-                  className="font-medium text-lg"
-                  textGradient
-                >
-                  Developer
-                </Typography>
-              </CardBody>
-            </Card>
-          </div>
-          <div className="grid font-Poppins justify-center items-center text-center">
-            <Card className="w-96 ">
-              <CardHeader floated={false} className="h-80">
-                <img src={logistic} />
-              </CardHeader>
-              <CardBody className="text-center">
-                <Typography variant="h4" color="blue-gray" className="mb-2">
-                  Pravin Gangurde
-                </Typography>
-                <Typography
-                  color="blue-gray"
-                  className="font-medium text-lg"
-                  textGradient
-                >
-                  Logistic Head
-                </Typography>
-              </CardBody>
-            </Card>
-          </div>
-        </div>
-      </div>
+      </section>
 
       <Footer />
     </>

@@ -9,7 +9,7 @@ const Login = () => {
   
   const handleLogin = () => {
     // Perform login authentication here
-    if (id === '50015' && password === '50015') {
+    if (id === 'hitanshu' && password === 'hit123') {
       // Redirect to the desired page upon successful login
       // For example: window.location.href = '/dashboard';
       localStorage.setItem("auth",true)

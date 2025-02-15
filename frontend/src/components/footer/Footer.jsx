@@ -65,7 +65,7 @@ const Footer = () => {
           Copyright © {new Date().getFullYear()}. All rights reserved.
         </h1>
         <h1 className="p-3 grid justify-center text-center items-center font-semibold">
-          Developed by Hitanshu Gandhi
+          <a href="https://www.envisiatech.com/">Developed by Hitanshu Gandhi</a>
         </h1>
         <h1 className="p-3 flex md:justify-end justify-center align-middle items-center ">
           <InstagramIcon fontSize="large" className=" text-red-500 mx-2 " />

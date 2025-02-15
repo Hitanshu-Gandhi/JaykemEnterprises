@@ -18,8 +18,6 @@ import QuickLime from "./container/product/productspages/QuickLime.jsx";
 import KaolinPowder from "./container/product/productspages/KaolinPowder.jsx";
 import Preloader from "./components/preloader/Preloader.jsx";
 import BlogForm from "./container/forms/blog/BlogForm.jsx";
-import ProductMain from "./container/forms/productMain/ProductMain.jsx";
-import ProductSub from "./container/forms/productSub/ProductSub.jsx";
 import ExpandBlog from "./container/blog/ExpandBlog.jsx";
 import Login from "./container/auth/login.jsx";
 
@@ -55,8 +53,6 @@ function App() {
           <Route path="/product/kaolinpowder" element={<KaolinPowder />} />
           <Route path="/product/magnesiumcarbonate" element={<MagnesiumCarbonate />} />
           <Route path="/admin/blogform" element={<BlogForm/>} />
-          <Route path="/admin/productmain" element={<ProductMain />} />
-          <Route path="/admin/productsub" element={<ProductSub />} />
         </Routes>
       </BrowserRouter>
     </>

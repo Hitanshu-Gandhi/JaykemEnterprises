@@ -12,7 +12,7 @@ const Blog = () => {
       .get("http://localhost:5000/blogs")
       .then((res) => {
         setBlogs(res.data.blogs);
-        console.log(res.data.blogs)
+        console.log(res.data.blogs);
       })
       .catch((err) => {
         console.log(err);
@@ -20,28 +20,46 @@ const Blog = () => {
   }, []);
 
   return (
-    <div>
-      <Header />      
+    <div className="bg-gray-50 min-h-screen">
+      <Header />
       <Header2 />
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+        <h1 className="text-4xl font-semibold text-center text-gray-900 mb-16">
+          Latest Blogs
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {blogs.map((blog, index) => (
             <Link key={blog._id} to={`/blogs/${blog._id}`}>
-              <div className={`rounded-lg overflow-hidden shadow-lg transition transform hover:scale-105 duration-300 ease-in-out delay-${index}`}>
-                <img className="w-full h-[25.166rem]" src={blog.coverImage} alt="Blog Cover" /> 
-                <div className="p-4">
-                  <div className="font-bold text-xl mb-2">{blog.title}</div>
-                  <p className="text-gray-700 text-base">
-                    {blog.plainText.substring(0, 100)}...
-                  </p>
+              <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transform transition-all duration-300 hover:scale-105 overflow-hidden">
+                <div className="relative">
+                  <img
+                    className="w-full h-[220px] object-cover rounded-t-xl transition-all duration-300 hover:scale-105"
+                    src={blog.coverImage}
+                    alt="Blog Cover"
+                  />
+                  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 transition-all duration-300 hover:opacity-0"></div>
                 </div>
-                <div className="bg-gray-200 p-2 flex items-center justify-between">
-                  <div className="flex items-center">
-                    <img src={blog.authorImage} className="w-8 h-8 rounded-full" alt="Author" />
-                    <p className="text-sm text-gray-600 ml-2">{new Date(blog.createdAt).toLocaleDateString()}</p>
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-gray-500 flex items-center justify-center text-white text-sm">
-                    <span>{new Date(blog.createdAt).getDate()}</span>
+                <div className="p-6">
+                  <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                    {blog.title}
+                  </h2>
+                  <p className="text-gray-700 text-base mb-6">
+                    {blog.plainText.substring(0, 120)}...
+                  </p>
+                  <div className="flex justify-between items-center text-sm text-gray-500">
+                    <div className="flex items-center">
+                      <img
+                        src={blog.authorImage}
+                        className="w-8 h-8 rounded-full"
+                        alt="Author"
+                      />
+                      <span className="ml-2">
+                        {new Date(blog.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <div className="text-center py-1 px-3 bg-blue-500 text-white text-sm rounded-full">
+                      <span>{new Date(blog.createdAt).getDate()}</span>
+                    </div>
                   </div>
                 </div>
               </div>

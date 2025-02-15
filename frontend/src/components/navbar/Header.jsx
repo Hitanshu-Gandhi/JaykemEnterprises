@@ -4,42 +4,47 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className="hidden md:block">
-      <div className="p-1 flex justify-between">
-        {/* logo */}
-        <div className="flex items-center">
-          <img src={logo} alt="JE" className="h-24 brightness-0" />
-          <h1 className="text-[2.4rem] font-Arimo font-medium mx-1 uppercase p-1 text-center">
+    <nav className="bg-white hidden md:block top-0 z-50">
+      <div className="p-4 flex justify-between items-center container mx-auto">
+        {/* Logo Section */}
+        <div className="flex items-center space-x-4">
+          <img src={logo} alt="JE" className="h-16" />
+          <h1 className="text-2xl md:text-3xl font-bold font-Arimo uppercase text-gray-800">
             Jaykem Enterprises
           </h1>
         </div>
 
-        {/* links */}
-        <div className=" flex items-center">
-          <Link to={"/"}>
-            <div className=" cursor-pointer font-Poppins p-2 mx-4 text-lg hover:text-blue-800 hover:scale-105 transition-all duration-300">
-              <p>Home</p>
-            </div>
+        {/* Navigation Links */}
+        <div className="hidden md:flex space-x-8">
+          <Link
+            to="/"
+            className="font-Poppins text-lg text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          >
+            Home
           </Link>
-          <Link to={"/product"}>
-            <div className=" cursor-pointer font-Poppins p-2 mx-4 text-lg hover:text-blue-800 hover:scale-105 transition-all duration-300">
-              <p>Products</p>
-            </div>
+          <Link
+            to="/product"
+            className="font-Poppins text-lg text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          >
+            Products
           </Link>
-          <Link to={"/about"}>
-            <div className=" cursor-pointer font-Poppins p-2 mx-4 text-lg hover:text-blue-800 hover:scale-105 transition-all duration-300">
-              <p>About</p>
-            </div>
+          <Link
+            to="/about"
+            className="font-Poppins text-lg text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          >
+            About
           </Link>
-          <Link to={"/contact"}>
-            <div className=" cursor-pointer font-Poppins p-2 mx-4 text-lg hover:text-blue-800 hover:scale-105 transition-all duration-300">
-              <p>Contact</p>
-            </div>
+          <Link
+            to="/contact"
+            className="font-Poppins text-lg text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          >
+            Contact
           </Link>
-          <Link to={"/blog"}>
-            <div className=" cursor-pointe font-Poppins p-2 mx-4 text-lg hover:text-blue-800 hover:scale-105 transition-all duration-300">
-              <p>Blog</p>
-            </div>
+          <Link
+            to="/blog"
+            className="font-Poppins text-lg text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          >
+            Blog
           </Link>
         </div>
       </div>

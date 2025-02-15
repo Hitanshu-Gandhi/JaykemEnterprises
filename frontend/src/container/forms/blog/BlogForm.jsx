@@ -22,7 +22,7 @@ const BlogForm = ({ placeholder }) => {
       blogContent: content,
       coverImage: coverImage,
     };
-
+console.log(data)
     axios
       .post("http://localhost:5000/blogs", data)
       .then((res) => {

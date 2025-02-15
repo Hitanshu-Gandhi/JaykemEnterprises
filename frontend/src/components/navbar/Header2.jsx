@@ -15,16 +15,16 @@ const Header2 = () => {
             Jaykem Enterprises
           </h1>
         </div>
-
-        <nav className="right-0">
-          <Squash
-            toggled={isOpen}
-            toggle={setOpen}
-            onToggle={(toggled) => {
-              setOpen(!isOpen);
-            }}
-          />
-        </nav>
+        <div
+          className="cursor-pointer z-30"
+          onClick={() => setOpen(!isOpen)}
+        >
+          <div className="space-y-2">
+            <div className={`h-1 w-8 bg-black rounded transition-transform ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <div className={`h-1 w-8 bg-black rounded transition-opacity ${isOpen ? "opacity-0" : ""}`} />
+            <div className={`h-1 w-8 bg-black rounded transition-transform ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </div>
+        </div>
       </div>
 
       <div className={`grid grid-cols-1 p-4 gap-4 text-center ${isOpen ? "block" : "hidden"}`}>
