@@ -10,7 +10,7 @@ const ExpandBlog = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/blogs/${id}`)
+      .get(`http://api.jaykementerprises.com/blogs/${id}`)
       .then((response) => {
         setBlog(response.data);
       })

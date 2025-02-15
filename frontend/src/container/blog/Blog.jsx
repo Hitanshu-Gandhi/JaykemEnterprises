@@ -9,7 +9,7 @@ const Blog = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/blogs")
+      .get("http://api.jaykementerprises.com/blogs")
       .then((res) => {
         setBlogs(res.data.blogs);
         console.log(res.data.blogs);

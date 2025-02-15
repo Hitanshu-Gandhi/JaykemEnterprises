@@ -24,7 +24,7 @@ const BlogForm = ({ placeholder }) => {
     };
 console.log(data)
     axios
-      .post("http://localhost:5000/blogs", data)
+      .post("http://api.jaykementerprises.com/blogs", data)
       .then((res) => {
         console.log(res);
         // Reset state variables to empty strings after successful submission
