@@ -9,7 +9,7 @@ const Blog = () => {
 
   useEffect(() => {
     axios
-      .get("http://api.jaykementerprises.com/blogs")
+      .get("https://api.jaykementerprises.com/blogs")
       .then((res) => {
         setBlogs(res.data.blogs);
         console.log(res.data.blogs);
